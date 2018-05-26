@@ -1,0 +1,102 @@
+﻿<UserControl x:Class="Contract.Import.UI.ImportControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="8.5*" />
+            <RowDefinition Height="1.5*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="300*" />
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="100" />
+        </Grid.ColumnDefinitions>
+        <Button x:Name="BtnExcelImport" Grid.Column="2" Content="Импорт"
+                 ToolTip="Choose Excel File" FontWeight="Bold"
+                Height="30" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center"  Click="btnExcelImport_Click"
+                Width="80" />
+        <TextBox x:Name="TxtExcelPath" IsReadOnly="True" Grid.Row="0" Grid.Column="1"
+                 Height="30"
+                 TextWrapping="Wrap"  HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+        <DataGrid Grid.Column="0" x:Name="DataGrid" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+			IsReadOnly="True" LoadingRow="DataGrid_OnLoadingRow" Grid.Row="1" Grid.ColumnSpan="4">
+            <DataGrid.RowHeaderTemplate>
+                <DataTemplate>
+                    <TextBlock
+                        Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}},Path=Header}" />
+                </DataTemplate>
+            </DataGrid.RowHeaderTemplate>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Статус"  Binding="{Binding Path= Status}" />
+                <DataGridTextColumn Header="2" Width="150" Binding="{Binding Path= V2}" >
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="3" Width="200" Binding="{Binding Path= V3}" >
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="4"  Binding="{Binding Path= V4}" />
+                <DataGridTextColumn Header="5"  Binding="{Binding Path= V5}" />
+                <DataGridTextColumn Header="6" Binding="{Binding Path= V6}" />
+                <DataGridTextColumn Header="7"  Binding="{Binding Path= V7}" />
+                <DataGridTextColumn Header="8" Binding="{Binding Path= V8}" />
+                <DataGridTextColumn Header="9" Binding="{Binding Path= V9}" />
+                <DataGridTextColumn Header="10"  Binding="{Binding Path=V10}" />
+                <DataGridTextColumn Header="11" Binding="{Binding Path=V11 , StringFormat=MM/dd/yyyy}" />
+                <DataGridTextColumn Header="12" Binding="{Binding Path=V12, StringFormat=\{0:n2\}}" />
+                <DataGridTextColumn Header="13" Binding="{Binding Path=V13, StringFormat=\{0:n2\}}" />
+                <DataGridTextColumn Header="14" Binding="{Binding Path=V14, StringFormat=\{0:n2\}}" />
+                <DataGridTextColumn Header="15" Binding="{Binding Path=V15, StringFormat=\{0:n2\}}" />
+                <DataGridTextColumn Header="16" Binding="{Binding Path=V16, StringFormat=\{0:n2\}}" />
+                <DataGridTextColumn Header="17" Binding="{Binding Path=V17, StringFormat=\{0:n2\}}" />
+                <DataGridTextColumn Header="18" Binding="{Binding Path=V18, StringFormat=\{0:n2\}}" />
+                <DataGridTextColumn Header="19" Binding="{Binding Path=V19, StringFormat=\{0:n2\}}" />
+                <DataGridTextColumn Header="20" Binding="{Binding Path=V20, StringFormat=\{0:n2\}}" />
+                <DataGridTextColumn Header="21" Binding="{Binding Path=V21, StringFormat=\{0:n2\}}" />
+                <DataGridTextColumn Header="22" Binding="{Binding Path=V22, StringFormat=\{0:n2\}}" />
+                <DataGridTextColumn Header="23" Binding="{Binding Path=V23, StringFormat=\{0:n2\}}" />
+                <DataGridTextColumn Header="24" Binding="{Binding Path=V24, StringFormat=\{0:n2\}}" />
+                <DataGridTextColumn Header="25" Binding="{Binding Path=V25 , StringFormat=MM/dd/yyyy}" />
+                <DataGridTextColumn Header="26" Binding="{Binding Path=V26 , StringFormat=\{0:n2\}}" />
+                <DataGridTextColumn Header="27" Binding="{Binding Path=V27, StringFormat=MM/dd/yyyy}" />
+                <DataGridTextColumn Header="28" Binding="{Binding Path=V28 , StringFormat=MM/dd/yyyy}" />
+                <DataGridTextColumn Header="29" Binding="{Binding Path=V29, StringFormat=MM/dd/yyyy}" />
+                <DataGridTextColumn Header="30" Binding="{Binding Path=V30, StringFormat=MM/dd/yyyy}" />
+                <DataGridTextColumn Header="31" Binding="{Binding Path=V31, StringFormat=MM/dd/yyyy}" />
+                <DataGridTextColumn Header="32" Binding="{Binding Path=V32 , StringFormat=MM/dd/yyyy}" />
+                <DataGridTextColumn Header="33" Binding="{Binding Path=V33 , StringFormat=MM/dd/yyyy}" />
+                <DataGridTextColumn Header="34" Binding="{Binding Path=V34}" />
+                <DataGridTextColumn Header="35" Binding="{Binding Path=V35}" />
+                <DataGridTextColumn Header="36" Binding="{Binding Path=V36}" />
+                <DataGridTextColumn Header="37" Binding="{Binding Path=V37 , StringFormat=MM/dd/yyyy}" />
+                <DataGridTextColumn Header="38" Binding="{Binding Path=V38}" />
+                <DataGridTextColumn Header="39" Binding="{Binding Path=V39, StringFormat=MM/dd/yyyy}" />
+                <DataGridTextColumn Header="40" Binding="{Binding Path=V40,  StringFormat=\{0:n2\}}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="CancelButton" Grid.Column="3" Grid.Row="0"
+               ToolTip="Cancel operation" FontWeight="Bold"
+                Height="30" FontSize="14"  VerticalAlignment="Center" HorizontalAlignment="Center" Click="btnCancelImport_Click"
+                Content="Отмена" Width="80" />
+        <Button x:Name="ChooseButton" Grid.Row="0" Grid.Column="0"
+                ToolTip="Choose excel" FontWeight="Bold"
+                Height="30" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center"   Click="ChooseButton_OnClick"
+                Content="Выбирать" Width="80" />
+        <ProgressBar x:Name="ProgressBar" HorizontalAlignment="Right" Height="30" Grid.Row="2"
+                     Grid.Column="0" VerticalAlignment="Center" Width="75" />
+        <Label x:Name="Label" Content="0%" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Center" FontSize="16" FontFamily="Segoe UI Black"/>
+        <Label x:Name="Elapsed" Content="0:0:0" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Center" FontSize="16" FontFamily="Segoe UI Black" Grid.ColumnSpan="2"/>
+    </Grid>
+</UserControl>

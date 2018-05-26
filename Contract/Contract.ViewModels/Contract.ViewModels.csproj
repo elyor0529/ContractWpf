@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AF58C82E-2C26-45AE-9016-7BFC69CCFD17}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Contract.ViewModels</RootNamespace>
+    <AssemblyName>Contract.ViewModels</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Build\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DAL\BranchViewModel.cs" />
+    <Compile Include="DAL\CategoryViewModel.cs" />
+    <Compile Include="DAL\PeriodViewModel.cs" />
+    <Compile Include="Enums\ReportType.cs" />
+    <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="UI\ContractFilterModel.cs" />
+    <Compile Include="DAL\ActInvoiceViewModel.cs" />
+    <Compile Include="DAL\OrganizationViewModel.cs" />
+    <Compile Include="DAL\ContractDepartmentViewModel.cs" />
+    <Compile Include="DAL\ContractViewModel.cs" />
+    <Compile Include="DAL\ContractWorkPaymentViewModel.cs" />
+    <Compile Include="DAL\DepartmentViewModel.cs" />
+    <Compile Include="UI\ActInvoiceFilterModel.cs" />
+    <Compile Include="UI\ExportModel.cs" />
+    <Compile Include="UI\ImportModel.cs" />
+    <Compile Include="DAL\NakladnoyViewModel.cs" />
+    <Compile Include="DAL\PaymentViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DAL\WorkTypeViewModel.cs" />
+    <Compile Include="UI\NakladnoyFilterModel.cs" />
+    <Compile Include="UI\Reports\ContractReportModel.cs" />
+    <Compile Include="UI\Reports\ContractReportSection1ReportModel.cs" />
+    <Compile Include="UI\Reports\ContractReportSection2ReportModel.cs" />
+    <Compile Include="UI\Reports\ContractReportSection3ReportModel.cs" />
+    <Compile Include="UI\Reports\ContractReportSection4ReportModel.cs" />
+    <Compile Include="UI\Reports\ContractReportSection5ReportModel.cs" />
+    <Compile Include="UI\SpreedSheetModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Contact.Data\Contract.Data.csproj">
+      <Project>{49587FEC-B05F-4524-B16D-526488C92ECA}</Project>
+      <Name>Contract.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

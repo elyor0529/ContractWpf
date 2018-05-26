@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="Contract.Import.UI.CheckListControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Contract.Import.UI"
+             mc:Ignorable="d">
+    <Grid>
+        <TabControl x:Name="TabControl1" >
+            <TabItem Header="Договоров">
+                <Grid> 
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="500*" />
+                    </Grid.RowDefinitions>
+                    <Label Content="Перечень договоров" Grid.Row="0" HorizontalAlignment="Stretch"
+                                       HorizontalContentAlignment="Center"
+                                       VerticalAlignment="Center"  FontSize="24"
+                                       FontFamily="Times New Roman"/>
+                    <local:ContractList Grid.Row="1" Grid.Column="0"  VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Актов и счет-фактур">
+                <Grid> 
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="500*" />
+                    </Grid.RowDefinitions>
+                    <Label Content="Перечень актов и счет-фактур" Grid.Row="0" HorizontalAlignment="Stretch"
+                                       HorizontalContentAlignment="Center"
+                                       VerticalAlignment="Center"  FontSize="24"
+                                       FontFamily="Times New Roman" Grid.ColumnSpan="2" Margin="0,11"/>
+                    <local:ActInvoiceList Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Накладных">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="500*" />
+                    </Grid.RowDefinitions>
+                    <Label Content="Перечень накладных" Grid.Row="0" HorizontalAlignment="Stretch"
+                                       HorizontalContentAlignment="Center"
+                                       VerticalAlignment="Center"  FontSize="24"
+                                       FontFamily="Times New Roman"/>
+                    <local:NakladnoyList Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" />
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,40 @@
+﻿<Window x:Class="Contract.Import.UI.CustomerList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:tools="clr-namespace:Contract.Import.Tools"
+        Title="Перечень заказчиков"
+        Height="400" Width="600"
+        WindowStyle="SingleBorderWindow" 
+        ResizeMode="CanResize" 
+        ShowInTaskbar="False">
+    <ScrollViewer HorizontalScrollBarVisibility="Auto">
+        <Grid ScrollViewer.CanContentScroll="True">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+            </Grid.RowDefinitions>
+            <DataGrid Grid.Row="1" x:Name="DataGrid1" SelectionMode="Single" IsReadOnly="True" CanUserReorderColumns="False" MouseDoubleClick="DataGrid1_MouseDoubleClick">
+                <DataGrid.RowHeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock
+                        Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}},Path=Header}" />
+                    </DataTemplate>
+                </DataGrid.RowHeaderTemplate>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="№" Visibility="Hidden"   Binding="{Binding Path= Id}" />
+                    <DataGridTextColumn Header="Наименование заказчика"  Binding="{Binding Path= Name}" />
+                    <DataGridTextColumn Header="ИНН"  Binding="{Binding Path= Inn}" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <Label Grid.Row="0" Grid.Column="0" Width="50" Content="Поиск:" HorizontalAlignment="Left" />
+            <TextBox Grid.Row="0"  Grid.Column="0"  x:Name="TextBox1" Margin="50 0 0 0" TextChanged="TextBox1_OnTextChanged" VerticalAlignment="Stretch"  HorizontalAlignment="Stretch" />
+            <tools:PagingControl Grid.Row="2" x:Name="GridPaging1"   HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+            <Button Content="Выберите" Grid.Row="3" Width="100px" Click="ButtonSelect_Click" Margin="0,0,10,0" HorizontalAlignment="Right"></Button>
+            <Button Content="Создать" Grid.Row="3" Width="100px" Click="ButtonAdd_Click" Margin="10,0,0,0" HorizontalAlignment="Left"></Button>
+            <Button Content="Редактировать" Grid.Row="3" Width="100px" Click="ButtonEdit_Click" Margin="127,0,0,0" HorizontalAlignment="Left"/>
+        </Grid>
+    </ScrollViewer>
+</Window>

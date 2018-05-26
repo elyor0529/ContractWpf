@@ -1,0 +1,151 @@
+﻿<Window x:Class="Contract.Import.UI.ContractForm"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+        Title="Сохранить договора"
+        Height="700"
+        Width="900"
+        WindowStyle="SingleBorderWindow" 
+        ResizeMode="CanResize"
+        WindowStartupLocation="CenterScreen" Icon="/Contract.Import;component/contract.ico">
+    <Window.Resources>
+        <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="ComboBox" BasedOn="{StaticResource {x:Type ComboBox}}">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="DatePicker" BasedOn="{StaticResource {x:Type DatePicker}}">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="CheckBox" BasedOn="{StaticResource {x:Type CheckBox}}">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <ScrollViewer HorizontalScrollBarVisibility="Auto">
+        <Grid  ScrollViewer.CanContentScroll="True" DataContext="{Binding ContractModel, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Name="Grid1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="15" />
+                <RowDefinition Height="25" />
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="25" />
+                <RowDefinition Height="25" />
+                <RowDefinition Height="25" />
+                <RowDefinition Height="25" />
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="25" />
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="25" />
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="25" />
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="25" />
+                <RowDefinition Height="25" />
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="25" />
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="25" />
+                <RowDefinition Height="25" />
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="25" />
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="25" />
+                <RowDefinition Height="0*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="134" />
+                <ColumnDefinition Width="133" />
+                <ColumnDefinition Width="133" />
+                <ColumnDefinition Width="133" />
+                <ColumnDefinition Width="134" />
+                <ColumnDefinition Width="133" />
+            </Grid.ColumnDefinitions>
+            <Label Content="Филиал:" Grid.Row="1" HorizontalAlignment="Right"  Grid.RowSpan="2" Grid.Column="0" />
+            <ComboBox Grid.Column="1"  ItemsSource="{Binding Path= Branches,UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="Id"  SelectedValue="{Binding Path=BranchId}" Grid.Row="1" />
+            <Label Content="Тип:" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" />
+            <ComboBox Grid.Column="1"  ItemsSource="{Binding Path= Categories,UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="Id"   SelectedValue="{Binding Path=CategoryId}" Grid.Row="4"/>
+            <Label Content="№:" Grid.Column="2" Grid.Row="1"  HorizontalAlignment="Right"/>
+            <TextBox Grid.Column="3" IsReadOnly="True" Text="{Binding Path=ContractNumber,UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" />
+            <Label Content="Дата:" Grid.Column="4"  HorizontalAlignment="Right" Grid.Row="1"/>
+            <DatePicker SelectedDate="{Binding Path=ContractDate}"  Grid.Column="5" Grid.Row="1" ></DatePicker>
+            <CheckBox IsChecked="{Binding Path=IsTreaguare}" x:Name="ContractTreaguare" Click="ContractTreaguare_Click" Content="Казначейство" Grid.Column="5" Grid.Row="3"  HorizontalAlignment="Left"></CheckBox>
+            <Label Content="ИНН заказчика:" Grid.Column="0" Grid.Row="6"  HorizontalAlignment="Right"/>
+            <TextBox Text="{Binding Path=Organization.Inn,ValidatesOnNotifyDataErrors=True}" IsReadOnly="True" Grid.Column="1" Grid.Row="6" ></TextBox>
+            <Button Content=" ... " Grid.Column="2" Grid.Row="6"  HorizontalAlignment="Left" Click="btnCustomer_Click" Height="25" VerticalAlignment="Top"/>
+            <Label Content="Заказчик:" Grid.Column="3" Grid.Row="4" HorizontalAlignment="Right"/>
+            <TextBox Grid.Column="4" IsReadOnly="True" Text="{Binding Path=Organization.Name}" Grid.Row="4" Grid.RowSpan="3"  Grid.ColumnSpan="2"/>
+            <Label Content="р/с:" Grid.Column="3" Grid.Row="8"  HorizontalAlignment="Right"></Label>
+            <TextBox Grid.Column="4" IsReadOnly="True" Text="{Binding Path=Organization.AccountNumber}"  Grid.Row="8"   Grid.ColumnSpan="2"/>
+            <Label Content="л/с:" Grid.Column="3" Grid.Row="10"  HorizontalAlignment="Right"></Label>
+            <TextBox Grid.Column="4"  Grid.Row="10" IsReadOnly="True"  Grid.ColumnSpan="2"/>
+            <Label Content="к/с:" Grid.Column="3" Grid.Row="12"  HorizontalAlignment="Right"></Label>
+            <TextBox Grid.Column="4"  Grid.Row="12"  IsReadOnly="True"  Grid.ColumnSpan="2"/>
+            <Label Content="банк:" Grid.Column="3" Grid.Row="14"  HorizontalAlignment="Right"></Label>
+            <TextBox Grid.Column="4" IsReadOnly="True" Text="{Binding Path=Organization.BankName1}" Grid.Row="14"   Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+            <Label Content="мфо:" Grid.Column="3" Grid.Row="17"  HorizontalAlignment="Right"/>
+            <TextBox Grid.Column="4" IsReadOnly="True" Text="{Binding Path=Organization.Mfo1}" Grid.Row="17"  HorizontalAlignment="Left" Width="79"></TextBox>
+            <Label Content="оконх:" Grid.Column="4" Grid.Row="17"  HorizontalAlignment="Right"/>
+            <TextBox Grid.Column="5" IsReadOnly="True" Text="{Binding Path=Organization.Okohx}" Grid.Row="17"  HorizontalAlignment="Left"  Width="104"></TextBox>
+            <Label Content="Объект:" Grid.ColumnSpan="2" Grid.Column="0" HorizontalAlignment="Right" Grid.Row="19"/>
+            <TextBox Grid.Column="2"  Text="{Binding Path=ObjectName,ValidatesOnNotifyDataErrors=True}" Grid.Row="19"  Grid.ColumnSpan="4" Grid.RowSpan="2"></TextBox>
+            <Label Content="Виды работ:" Grid.Column="0" Grid.Row="22"  HorizontalAlignment="Right" ></Label>
+            <ComboBox Grid.Column="1" SelectedValue="{Binding Path=WorkTypeId1,ValidatesOnNotifyDataErrors=True}" ItemsSource="{Binding Path= WorkTypes}" SelectedValuePath="Id"  Grid.Row="22"></ComboBox>
+            <ComboBox Grid.Column="1" SelectedValue="{Binding Path=WorkTypeId2,ValidatesOnNotifyDataErrors=True}" ItemsSource="{Binding Path= WorkTypes}" SelectedValuePath="Id"  Grid.Row="23"></ComboBox>
+            <ComboBox Grid.Column="1" SelectedValue="{Binding Path=WorkTypeId3,ValidatesOnNotifyDataErrors=True}" ItemsSource="{Binding Path= WorkTypes}" SelectedValuePath="Id"  Grid.Row="24"></ComboBox>
+            <ComboBox Grid.Column="1" SelectedValue="{Binding Path=WorkTypeId4,ValidatesOnNotifyDataErrors=True}" ItemsSource="{Binding Path= WorkTypes}" SelectedValuePath="Id"  Grid.Row="25"></ComboBox>
+            <ComboBox Grid.Column="1" SelectedValue="{Binding Path=WorkTypeId5,ValidatesOnNotifyDataErrors=True}" ItemsSource="{Binding Path= WorkTypes}" SelectedValuePath="Id" Grid.Row="26"></ComboBox>
+            <Label Content="Сумма:" Grid.Column="2" Grid.Row="22"  HorizontalAlignment="Right"></Label>
+            <TextBox Grid.Column="3" x:Name="Amount1"   Text="{Binding Path=Amount1,  Converter={StaticResource DoubleConverter}, StringFormat=0:N2,UpdateSourceTrigger=PropertyChanged}" Grid.Row="22" ></TextBox>
+            <Label Content="Сумма:" Grid.Column="2" Grid.Row="23" HorizontalAlignment="Right" ></Label>
+            <TextBox Grid.Column="3" x:Name="Amount2"  Text="{Binding Path=Amount2,  Converter={StaticResource DoubleConverter}, StringFormat=0:N2,UpdateSourceTrigger=PropertyChanged}" Grid.Row="23" ></TextBox>
+            <Label Content="Сумма:" Grid.Column="2" Grid.Row="24" HorizontalAlignment="Right"></Label>
+            <TextBox Grid.Column="3" x:Name="Amount3"   Text="{Binding Path=Amount3,  Converter={StaticResource DoubleConverter}, StringFormat=0:N2,UpdateSourceTrigger=PropertyChanged}" Grid.Row="24" ></TextBox>
+            <Label Content="Сумма:" Grid.Column="2" Grid.Row="25" HorizontalAlignment="Right"></Label>
+            <TextBox Grid.Column="3" x:Name="Amount4"   Grid.Row="25" Text="{Binding Path=Amount4, Converter={StaticResource DoubleConverter}, StringFormat=0:N2,UpdateSourceTrigger=PropertyChanged}" ></TextBox>
+            <Label Content="Сумма:" Grid.Column="2" Grid.Row="26"  HorizontalAlignment="Right"/>
+            <TextBox Grid.Column="3" x:Name="Amount5"  Grid.Row="26" Text="{Binding Path=Amount5,  Converter={StaticResource DoubleConverter}, StringFormat=0:N2,UpdateSourceTrigger=PropertyChanged}" ></TextBox>
+            <Label Content="Общая сумма:" Grid.Column="2" Grid.Row="27" HorizontalAlignment="Right"/>
+            <TextBox Grid.Column="3" x:Name="AmountTotal"  Grid.Row="27" Text="{Binding Path=ContractAmount, Converter={StaticResource DoubleConverter}, StringFormat=0:N2,UpdateSourceTrigger=PropertyChanged}"  IsReadOnly="True"></TextBox>
+            <Label Content="Срок:" Grid.Column="4" Grid.Row="22" HorizontalAlignment="Right" ></Label>
+            <ComboBox Grid.Column="5"  SelectedValue="{Binding Path=PeriodId1}"  Grid.Row="22"  ItemsSource="{Binding Path= Periods}" SelectedValuePath="Id" ></ComboBox>
+            <Label Content="Срок:" Grid.Column="4" Grid.Row="23" HorizontalAlignment="Right"></Label>
+            <ComboBox Grid.Column="5"  SelectedValue="{Binding Path=PeriodId2}"  Grid.Row="23" ItemsSource="{Binding Path= Periods}" SelectedValuePath="Id"  ></ComboBox>
+            <Label Content="Срок:" Grid.Column="4" Grid.Row="24" HorizontalAlignment="Right"></Label>
+            <ComboBox Grid.Column="5" SelectedValue="{Binding Path=PeriodId3}"  Grid.Row="24" ItemsSource="{Binding Path= Periods}" SelectedValuePath="Id" ></ComboBox>
+            <Label Content="Срок:" Grid.Column="4" Grid.Row="25" HorizontalAlignment="Right"></Label>
+            <ComboBox Grid.Column="5" SelectedValue="{Binding Path=PeriodId4}"  Grid.Row="25" ItemsSource="{Binding Path= Periods}" SelectedValuePath="Id" ></ComboBox>
+            <Label Content="Срок:" Grid.Column="4" Grid.Row="26" HorizontalAlignment="Right"></Label>
+            <ComboBox Grid.Column="5" SelectedValue="{Binding Path=PeriodId5}"  Grid.Row="26" ItemsSource="{Binding Path= Periods}" SelectedValuePath="Id" ></ComboBox>
+            <CheckBox Content="Счет фактура"  HorizontalAlignment="Left" Grid.Column="5" Grid.Row="28" IsChecked="{Binding Path=HasActInvoice}"></CheckBox>
+            <CheckBox Content="Накладной"  HorizontalAlignment="Left" Grid.Column="5" Grid.Row="29"  IsChecked="{Binding Path=HasNakladnoy}"></CheckBox>
+            <Button Content="Сформировать и печать" Grid.Column="3" Grid.Row="31" Grid.ColumnSpan="2" Click="btnSaveAndPrint_Click" Margin="0,0,56,0"></Button>
+            <Button Content="Сформировать" Grid.Column="5" Grid.Row="31" Click="btnSave_Click"></Button>
+            <Label  Grid.Column="4" Grid.Row="31" Visibility="Hidden" Content="{Binding Path=Id}" />
+        </Grid>
+    </ScrollViewer>
+</Window>

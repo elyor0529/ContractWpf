@@ -1,0 +1,109 @@
+﻿<Window x:Class="Contract.Import.UI.CustomerForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Данные по заказчику" 
+        Height="400" 
+        Width="600"
+        ResizeMode="CanResize" 
+        WindowStyle="SingleBorderWindow"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <ScrollViewer HorizontalScrollBarVisibility="Auto">
+        <Grid DataContext="{Binding CustomerModel, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" ScrollViewer.CanContentScroll="True">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="400*" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Grid.Row="0" Content="Наименование организации" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Path=Name,ValidatesOnNotifyDataErrors=True, UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Left" VerticalAlignment="Center" Width="200"/>
+
+            <Label Grid.Column="0" Grid.Row="1" Content="Форма собственности" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding Path=TypeOwnership,ValidatesOnNotifyDataErrors=True}"   HorizontalAlignment="Left" VerticalAlignment="Center" Width="200"/>
+
+            <Label Grid.Column="0" Grid.Row="2" Content="Руководитель" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1"  Grid.Row="2" Text="{Binding Path=Chief,ValidatesOnNotifyDataErrors=True}"    HorizontalAlignment="Left" VerticalAlignment="Center" Width="200"/>
+
+            <Label Grid.Column="0" Grid.Row="3" Content="Должность" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1"  Grid.Row="3"  Text="{Binding Path=Position,ValidatesOnNotifyDataErrors=True}"   HorizontalAlignment="Left" VerticalAlignment="Center" Width="200"/>
+
+            <Label Grid.Column="0" Grid.Row="4" Content="Основание" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1"  Grid.Row="4" Text="{Binding Path=Foundation,ValidatesOnNotifyDataErrors=True}"    HorizontalAlignment="Left" VerticalAlignment="Center" Width="200"/>
+
+            <Label Grid.Column="0" Grid.Row="5" Content="Юридический адрес" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1"  Grid.Row="5"  Text="{Binding Path=LegalAddress,ValidatesOnNotifyDataErrors=True}"   HorizontalAlignment="Left" VerticalAlignment="Center" Width="200"/>
+
+            <Label Grid.Column="0" Grid.Row="6" Content="Почтовый индекс" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1"  Grid.Row="6" Text="{Binding Path=Postcode,ValidatesOnNotifyDataErrors=True}"   HorizontalAlignment="Left" VerticalAlignment="Center" Width="200"/>
+
+            <Label Grid.Column="0" Grid.Row="7" Content="Контактные телефоны" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1"  Grid.Row="7" Text="{Binding Path=PhoneNumbers,ValidatesOnNotifyDataErrors=True}"   HorizontalAlignment="Left" VerticalAlignment="Center" Width="200"/>
+
+            <Label Grid.Column="0" Grid.Row="8" Content="Р/С" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1"  Grid.Row="8" Text="{Binding Path=AccountNumber,ValidatesOnNotifyDataErrors=True}"   HorizontalAlignment="Left" VerticalAlignment="Center" Width="200"/>
+
+            <Label Grid.Column="0" Grid.Row="9" Content="Наименование банка" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1"  Grid.Row="9" Text="{Binding Path=BankName1,ValidatesOnNotifyDataErrors=True}"   HorizontalAlignment="Left" VerticalAlignment="Center" Width="200"/>
+
+            <Label Grid.Column="0" Grid.Row="10" Content="МФО" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1"  Grid.Row="10" Text="{Binding Path=Mfo1,ValidatesOnNotifyDataErrors=True}"   HorizontalAlignment="Left" VerticalAlignment="Center" Width="200"/>
+
+            <Label Grid.Column="0" Grid.Row="11" Content="Л/С" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1"  Grid.Row="11" Text="{Binding Path=LS,ValidatesOnNotifyDataErrors=True}"   HorizontalAlignment="Left" VerticalAlignment="Center" Width="200"/>
+
+            <Label Grid.Column="0" Grid.Row="12" Content="Наименование банка" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1"  Grid.Row="12" Text="{Binding Path=BankName2,ValidatesOnNotifyDataErrors=True}"   HorizontalAlignment="Left" VerticalAlignment="Center" Width="200"/>
+
+            <Label Grid.Column="0" Grid.Row="13" Content="МФО" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1"  Grid.Row="13" Text="{Binding Path=Mfo2,ValidatesOnNotifyDataErrors=True}"   HorizontalAlignment="Left" VerticalAlignment="Center" Width="200"/>
+
+            <Label Grid.Column="0" Grid.Row="14" Content="К/С" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1"  Grid.Row="14" Text="{Binding Path=KS,ValidatesOnNotifyDataErrors=True}"   HorizontalAlignment="Left" VerticalAlignment="Center" Width="200"/>
+
+            <Label Grid.Column="0" Grid.Row="15" Content="Наименование банка" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1"  Grid.Row="15" Text="{Binding Path=BankName3,ValidatesOnNotifyDataErrors=True}"   HorizontalAlignment="Left" VerticalAlignment="Center" Width="200"/>
+
+            <Label Grid.Column="0" Grid.Row="16" Content="МФО" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1"  Grid.Row="16" Text="{Binding Path=Mfo3,ValidatesOnNotifyDataErrors=True}"   HorizontalAlignment="Left" VerticalAlignment="Center" Width="200"/>
+
+            <Label Grid.Column="0" Grid.Row="17" Content="ИНН" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1"  Grid.Row="17" Text="{Binding Path=Inn,ValidatesOnNotifyDataErrors=True}"   HorizontalAlignment="Left" VerticalAlignment="Center" Width="200"/>
+
+            <Label Grid.Column="0" Grid.Row="18" Content="ОКОНХ" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1"  Grid.Row="18" Text="{Binding Path=Okohx,ValidatesOnNotifyDataErrors=True}"   HorizontalAlignment="Left" VerticalAlignment="Center" Width="200"/>
+
+            <Button Grid.Column="1" Click="ButtonSave_OnClick" Grid.Row="19"  HorizontalAlignment="Left" Margin="10" Content="Сохранить" VerticalAlignment="Center" Width="100" Height="25"/>
+            <Button Content="Отменить" Click="ButtonCancel_OnClick" HorizontalAlignment="Right" Margin="10" Grid.Row="19" Grid.Column="0" VerticalAlignment="Center" Width="100" Height="25"/>
+
+        </Grid>
+    </ScrollViewer>
+</Window>

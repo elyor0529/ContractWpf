@@ -1,0 +1,40 @@
+﻿<fluent:RibbonWindow
+    x:Class="Contract.Import.Layout"
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                     xmlns:fluent="clr-namespace:Fluent;assembly=Fluent"
+                     xmlns:ui="clr-namespace:Contract.Import.UI"
+                     xmlns:reports="clr-namespace:Contract.Import.Reports"
+                     AllowsTransparency="False"
+                     WindowStartupLocation="CenterScreen" 
+                    WindowState="Maximized"
+                    MinHeight="700"
+                    MinWidth="1200"
+                    Title="Contract System" 
+                    WindowStyle="ThreeDBorderWindow"
+                    Icon="../contract.ico">
+    <DockPanel LastChildFill="True">
+        <Grid ShowGridLines="False" DockPanel.Dock="Top">
+            <fluent:Ribbon x:Name="Ribbon" SelectedTabIndex="-1">
+                <fluent:Ribbon.QuickAccessItems>
+                    <fluent:QuickAccessMenuItem/>
+                </fluent:Ribbon.QuickAccessItems>
+                <fluent:Ribbon.Menu>
+                    <fluent:Backstage IsOpen="True" Header="Меню">
+                        <fluent:BackstageTabControl>
+                            <fluent:BackstageTabItem  Header="Перечень"  Icon="pack://application:,,,/ImagePackage;component/filter.png">
+                                <ui:CheckListControl  MinHeight="500"  VerticalAlignment="Top" />
+                            </fluent:BackstageTabItem>
+                            <fluent:BackstageTabItem  Header="Импорт"  Icon="pack://application:,,,/ImagePackage;component/Office 2007 Excel.png">
+                                <ui:ImportControl MinHeight="500" VerticalAlignment="Top"/>
+                            </fluent:BackstageTabItem>
+                            <fluent:BackstageTabItem  Header="Отчёт" Icon="pack://application:,,,/ImagePackage;component/filesaveas.png">
+                                <reports:ReportsControl MinHeight="500"  VerticalAlignment="Top" />
+                            </fluent:BackstageTabItem>
+                        </fluent:BackstageTabControl>
+                    </fluent:Backstage>
+                </fluent:Ribbon.Menu>
+            </fluent:Ribbon>
+        </Grid>
+    </DockPanel>
+</fluent:RibbonWindow>

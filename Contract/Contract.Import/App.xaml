@@ -1,0 +1,23 @@
+﻿<Application x:Class="Contract.Import.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:viewModels="clr-namespace:Contract.Import.ViewModels"
+             xmlns:converter="clr-namespace:Contract.Import.Converters"
+             StartupUri="Layout.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Fluent;Component/Themes/Office2010/Blue.xaml" />
+                <ResourceDictionary Source="Theme/BackstageControls.xaml" />
+                <ResourceDictionary Source="Theme/RibbonGroupBox.xaml" />
+                <ResourceDictionary Source="Theme/AuxiliaryResources.xaml" />
+                <ResourceDictionary Source="Theme/ControlStyle.xaml" />
+                <ResourceDictionary Source="Theme/BureauBlue.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <viewModels:ContractUIViewModel x:Key="ContractViewModel"/>
+            <viewModels:OrganizationUIViewModel x:Key="CustomerViewModel"/>
+            <converter:DoubleConverter x:Key="DoubleConverter"/>
+            <converter:DateTimeConverter x:Key="DateTimeConverter"/>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
